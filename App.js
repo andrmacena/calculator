@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import Button from './src/components/Button'
 
 export default class App extends Component {
    render() {
       return (
-         <View style={styles.body} >
-            <View style={styles.sectionContainer}>
-               <Text style={styles.sectionDescription}>
-                  Editar!! <Text style={styles.highlight}>App.js</Text> to change this
-                  screen and then come back to see your edits.
-              </Text>
+         <View style={styles.container}>
+            <View style={styles.buttons}>
+               <Button label='AC' />
+               <Button label='/' />
+               <Button label='7' />
+               <Button label='8' />
+               <Button label='9' />
+               <Button label='*' />
+               <Button label='4' />
+               <Button label='5' />
+               <Button label='6' />
+               <Button label='-' />
+               <Button label='1' />
+               <Button label='2' />
+               <Button label='3' />
+               <Button label='+' />
+               <Button label='0' />
+               <Button label='.' />
+               <Button label='=' />
             </View>
          </View>
       )
@@ -17,19 +31,12 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-   body: {
-      backgroundColor: '#fff',
+   container: {
+      flex: 1,
    },
-   sectionContainer: {
-      marginTop: 32,
-      paddingHorizontal: 24,
-   },
-   sectionDescription: {
-      marginTop: 8,
-      fontSize: 18,
-      fontWeight: '400',
-   },
-   highlight: {
-      fontWeight: '700',
-   },
+   buttons:{
+      flexDirection: 'row',
+      flexWrap: 'wrap'
+
+   }
 });
