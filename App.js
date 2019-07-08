@@ -39,7 +39,26 @@ export default class App extends Component {
       this.setState({ ...initialState })
 
    }
-   setOperation = operation => {
+   setOperation = operationLocal => {
+         if (this.state.currentIndexValue === 0) {
+            this.setState({ operation: operationLocal, currentIndexValue: 1, clearDisplay: true })
+         } else {
+            const equal = operationLocal === '='
+            const valuesLocal = [...this.state.values]
+            try {
+               valuesLocal[0] = eval(`${valuesLocal[0]} ${this.state.operation} ${valuesLocal[1]}`)
+            } catch (e) {
+               valuesLocal[0] = this.state.values[0]
+            }
+            valuesLocal[1] = 0
+            this.setState({
+               displayValue: valuesLocal[0],
+               operation: equal ? null : operationLocal,
+               currentIndexValue: equal ? 0 : 1,
+               clearDisplay: true,
+               values: valuesLocal
+            })
+         }
 
    }
 
@@ -77,7 +96,7 @@ const styles = StyleSheet.create({
    },
    buttons: {
       flexDirection: 'row',
-      flexWrap: 'wrap'
-
+      flexWrap: 'wrap',
+      backgroundColor: 'rgba(0,0,0,0.6)'
    }
 });
