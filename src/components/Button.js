@@ -32,7 +32,7 @@ export default props => {
     if (props.triple) stylesButton.push(styles.buttonTriple)
     if (props.operation) stylesButton.push(styles.operationButton)
     return (
-        <TouchableHighlight onPress={() => props.onClick(props.label)}>
+        <TouchableHighlight style={{borderRadius: 50}}onPress={() => props.onClick(props.label)}>
             <Text style={stylesButton}>{props.label}</Text>
         </TouchableHighlight>
     )
