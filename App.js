@@ -4,7 +4,7 @@ import Button from './src/components/Button'
 import Display from './src/components/Display'
 
 const initialState = {
-   displayValue: '0',
+   displayValue: '',
    clearDisplay: false,
    operation: null,
    values: [0, 0],
@@ -15,12 +15,12 @@ export default class App extends Component {
    state = { ...initialState }
 
    addDigit = n => {
-      if (n === '.' && this.state.displayValue.includes('.')) {
+      //setando o clearDisplay como true
+      const clearDisplay = this.state.displayValue === '' || this.state.clearDisplay
+
+      if (n === '.' && !clearDisplay && this.state.displayValue.includes('.')) {
          return
       }
-
-      //setando o clearDisplay como true
-      const clearDisplay = this.state.displayValue === '0' || this.state.clearDisplay
 
       const currentDisplayValue = clearDisplay ? '' : this.state.displayValue
       const displayValue = currentDisplayValue + n
@@ -52,7 +52,7 @@ export default class App extends Component {
             }
             valuesLocal[1] = 0
             this.setState({
-               displayValue: valuesLocal[0],
+               displayValue: `${valuesLocal[0]}`,
                operation: equal ? null : operationLocal,
                currentIndexValue: equal ? 0 : 1,
                clearDisplay: true,
